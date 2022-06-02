@@ -8,7 +8,6 @@
 
 var todos = getTodos();
 
-var id = 1 ;
 checkTodos();
 function checkTodos() {
 // console.log(!(jQuery.isEmptyObject(todos)));
@@ -42,9 +41,9 @@ function displayTodos() {
                                 
                                 '<div class="button-container">' +
                                     
-                                    '<button id="delete">Delete</button>' +    
+                                    '<button id = '+ todos[i].id +' class="delete">Delete</button>' +    
                                         
-                                    '<button id="done">Done</button>' +
+                                    '<button id = '+ todos[i].id +' class="done">Done</button>' +
                                         
                                 '</div></div>' ;
 
@@ -75,18 +74,39 @@ function getTodos() {
 
         return [];
 
+
+}
+function getId() {
+
+    let id = localStorage.getItem("id");
+
+    if (id === null){
+
+        localStorage.setItem("id",1);
+
+        return localStorage.getItem("id");
+    }
+
+     else{ 
+
+        id++;
+
+        localStorage.setItem("id",id);
+
+        return localStorage.getItem("id");}
+
 }
 // var todos=[];
 function addTodo() {
 
-
-
     const date=getDate();
 
+    // var todo_id=getId();
+    
 
     todos.push({
 
-        "id" :id,
+        "id" :getId(),
 
         "Title":$('#title').val(),
 
@@ -101,8 +121,6 @@ function addTodo() {
     });
 
     saveTodo();
-
-    id++;
     
 }
 
@@ -111,6 +129,7 @@ function saveTodo() {
     localStorage.setItem("todos",JSON.stringify(todos));
 
 }
+
 
 function getDate() {
 
@@ -127,9 +146,9 @@ $('#btn-add').click(addTodo);
 
 $('#btn-cancel').click(hideForm);
 
-$('#delete').click(deleteTodo);
+$('.delete').click(deleteTodo);
 
-$('#done').click(doneTodo);
+// $('.done').click(doneTodo);
 
 
 
@@ -155,5 +174,19 @@ function hideForm() {
     $('#description').val('');
 
     $('#point').val('');
+
+}
+
+function deleteTodo(){
+
+    var delete_id = $(this).attr('id');//store id of todo in "id"
+
+    var todoIndex = todos.findIndex(todo => todo.id ===delete_id );//getting its index in the todo list
+
+    todos.splice(todoIndex, 1);
+
+    saveTodo();
+
+    location.assign('./index.html');
 
 }
