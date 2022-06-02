@@ -27,7 +27,7 @@ function displayTodos() {
     $.each(todos, function(i, item){
 
                 string +=                         
-                                '<div id="todos"><ul>' +
+                                '<div class="todos" id ='+ todos[i].id+' <ul>' +
                                 
                                     '<li>Title: '+ todos[i].Title +'</li>' +
 
@@ -41,9 +41,9 @@ function displayTodos() {
                                 
                                 '<div class="button-container">' +
                                     
-                                    '<button id = '+ todos[i].id +' class="delete">Delete</button>' +    
+                                    '<button  class="delete">Delete</button>' +    
                                         
-                                    '<button id = '+ todos[i].id +' class="done">Done</button>' +
+                                    '<button  class="done">Done</button>' +
                                         
                                 '</div></div>' ;
 
@@ -148,7 +148,7 @@ $('#btn-cancel').click(hideForm);
 
 $('.delete').click(deleteTodo);
 
-// $('.done').click(doneTodo);
+$('.done').click(doneTodo);
 
 
 
@@ -179,13 +179,28 @@ function hideForm() {
 
 function deleteTodo(){
 
-    var delete_id = $(this).attr('id');//store id of todo in "id"
+    var delete_id = $(this).parents(':eq(1)').attr('id');
+    console.log(delete_id);//store id of todo in "id"
 
     var todoIndex = todos.findIndex(todo => todo.id ===delete_id );//getting its index in the todo list
 
     todos.splice(todoIndex, 1);
 
     saveTodo();
+
+    location.assign('./index.html');
+
+}
+
+function doneTodo(){
+
+    var done_id = $(this).attr('id');//store id of todo in "id"
+
+    var todoIndex = todos.findIndex(todo => todo.id ===done_id );//getting its index in the todo list
+
+    console.log(todoIndex);
+
+    $('#'+todoIndex).css("background-color","green");
 
     location.assign('./index.html');
 

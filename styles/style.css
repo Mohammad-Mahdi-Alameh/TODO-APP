@@ -58,7 +58,7 @@ li{
   padding:1%;
 }
 
-#todos {
+.todos {
   margin:auto;
   border: 3px solid rgba(111, 106, 91, 0.159);
   padding: 10px;
