@@ -112,11 +112,11 @@ function addTodo() {
 
         "id" :getId(),
 
-        "Title":$('#title').val(),
+        "Title":$('#add-title').val(),
 
-        "Description":$('#description').val(),
+        "Description":$('#add-description').val(),
 
-        "Point":$('#point').val(),
+        "Point":$('#add-point').val(),
 
         "IsDone":0,
 
@@ -148,7 +148,7 @@ $('#add').click(popupAddForm);
 
 $('#btn-add').click(addTodo);
 
-$('#add-form-btn-cancel').click(hideForm);
+$('#add-form-btn-cancel').click(hideAddForm);
 
 $('.delete').click(deleteTodo);
 
@@ -158,7 +158,7 @@ $('.edit').click(popupEditForm);
 
 $('#btn-edit').click(editTodo);
 
-$('#edit-form-btn-cancel').click(hideForm);
+$('#edit-form-btn-cancel').click(hideEditForm);
 
 
 function popupAddForm() {
@@ -182,7 +182,7 @@ function popupEditForm() {
 }
 
 
-function hideForm() {
+function hideAddForm() {
 
     $('#todo-container').css("display", "block");
 
@@ -192,11 +192,29 @@ function hideForm() {
 
     //clearing input fields
 
-    $('#title').val('');
+    $('#add-title').val('');
 
-    $('#description').val('');
+    $('#add-description').val('');
 
-    $('#point').val('');
+    $('#add-point').val('');
+
+}
+
+function hideEditForm() {
+
+    $('#todo-container').css("display", "block");
+
+    $('#add-form').css("display", "none");
+    
+    $('#edit-form').css("display", "none");
+
+    //clearing input fields
+
+    $('#edit-title').val('');
+
+    $('#edit-description').val('');
+
+    $('#edit-point').val('');
 
 }
 
@@ -225,21 +243,22 @@ function doneTodo(){
 
 }
 
-function edit() {
+function editTodo() {
 
    var edit_id = $(this).parents(':eq(1)').attr('id');
 
     let editIndex = todos.findIndex(todo => todo.id ===edit_id );
-
+    
+    todos.splice(editIndex, 1);
     todos.push({
 
         "id" :edit_id,
 
-        "Title":$('#title').val(),
+        "Title":$('#edit-title').val(),
 
-        "Description":$('#description').val(),
+        "Description":$('#edit-description').val(),
 
-        "Point":$('#point').val(),
+        "Point":$('#edit-point').val(),
 
         "IsDone":0,
 
@@ -247,7 +266,7 @@ function edit() {
 
     });
 
-    todos.splice(editIndex, 1);
+    
     saveTodo();
 
     
