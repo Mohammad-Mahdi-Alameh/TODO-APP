@@ -71,7 +71,15 @@ function addTodo() {
 
         "CreatedAt":
 
-    })
+    });
+
+    saveTodo();
+
     
-    
+}
+
+function saveTodo() {
+
+    localStorage.setItem("todos",JSON.stringify(todos));
+
 }
