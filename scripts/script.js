@@ -57,21 +57,21 @@ function addTodo() {
 
     const id=uuidv4();
 
-    todos.push({
+    // todos.push({
 
-        "id" : id,
+    //     "id" : id,
 
-        "Title":
+    //     "Title":
 
-        "Description":
+    //     "Description":
 
-        "Point":
+    //     "Point":
 
-        "IsDone":
+    //     "IsDone":
 
-        "CreatedAt":
+    //     "CreatedAt":
 
-    });
+    // });
 
     saveTodo();
 
@@ -88,6 +88,10 @@ $('#add').click(popupForm);
 
 function popupForm() {
 
-    
+    $('#todos').css("display", "none");
+
+    $('#my-form').css("display", "block");
+
+
     
 }
