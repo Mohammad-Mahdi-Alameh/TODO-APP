@@ -180,7 +180,7 @@ function hideForm() {
 function deleteTodo(){
 
     var delete_id = $(this).parents(':eq(1)').attr('id');
-    console.log(delete_id);//store id of todo in "id"
+    
 
     var todoIndex = todos.findIndex(todo => todo.id ===delete_id );//getting its index in the todo list
 
@@ -194,14 +194,14 @@ function deleteTodo(){
 
 function doneTodo(){
 
-    var done_id = $(this).attr('id');//store id of todo in "id"
+    var done_id = $(this).parents(':eq(1)').attr('id');//store id of todo in "id"
 
     var todoIndex = todos.findIndex(todo => todo.id ===done_id );//getting its index in the todo list
 
     console.log(todoIndex);
 
-    $('#'+todoIndex).css("background-color","green");
+    $('#'+done_id).css("background-color","yellow");
 
-    location.assign('./index.html');
+    // location.assign('./index.html');
 
 }
