@@ -8,6 +8,8 @@
 
 var todos = getTodos();
 
+// var doneTodos=getDoneTodos();
+
 checkTodos();
 function checkTodos() {
 // console.log(!(jQuery.isEmptyObject(todos)));
@@ -42,7 +44,9 @@ function displayTodos() {
                                 '<div class="button-container">' +
                                     
                                     '<button  class="delete">Delete</button>' +    
-                                        
+                                    
+                                    '<button  class="edit">Edit</button>' +    
+                                    
                                     '<button  class="done">Done</button>' +
                                         
                                 '</div></div>' ;
@@ -150,6 +154,7 @@ $('.delete').click(deleteTodo);
 
 $('.done').click(doneTodo);
 
+$('.edit').click(edit);
 
 
 function popupForm() {
@@ -198,10 +203,38 @@ function doneTodo(){
 
     var todoIndex = todos.findIndex(todo => todo.id ===done_id );//getting its index in the todo list
 
-    console.log(todoIndex);
-
     $('#'+done_id).css("background-color","yellow");
 
     // location.assign('./index.html');
 
+}
+
+function edit() {
+
+    popupForm();
+
+    var edit_id = $(this).parents(':eq(1)').attr('id');
+
+    let editIndex = todos.findIndex(todo => todo.id ===edit_id );
+
+    todos.push({
+
+        "id" :edit_id,
+
+        "Title":$('#title').val(),
+
+        "Description":$('#description').val(),
+
+        "Point":$('#point').val(),
+
+        "IsDone":0,
+
+        "CreatedAt":todos[todoIndex].CreatedAt,
+
+    });
+
+    todos.splice(editIndex, 1);
+    saveTodo();
+
+    
 }
