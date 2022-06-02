@@ -5,3 +5,45 @@
   box-sizing: border-box;
 }
 
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center ;
+  height: 100px;
+  
+}
+
+.hero {
+  background-color: rgb(85, 187, 151);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #fff;
+  position: relative;
+  
+}
+
+.container {
+  padding: 0 6vw;
+  width: 100%;
+}
+
+.nav-bar-text{
+
+  font-size: 170%;
+  font-weight: bold;
+
+}
+
+.nav-bar-button{
+  background-color: #cbd3d0;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-size: 170%;
+  cursor: pointer;
+  width:5%;
+  height: 50%;
+  border-radius: 15%;
+  border-style: none;
+}
+
