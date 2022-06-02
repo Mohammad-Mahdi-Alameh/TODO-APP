@@ -144,24 +144,40 @@ function getDate() {
     return date;
 }
 
-$('#add').click(popupForm);
+$('#add').click(popupAddForm);
 
 $('#btn-add').click(addTodo);
 
-$('#btn-cancel').click(hideForm);
+$('#add-form-btn-cancel').click(hideForm);
 
 $('.delete').click(deleteTodo);
 
 $('.done').click(doneTodo);
 
-$('.edit').click(edit);
+$('.edit').click(popupEditForm);
+
+$('#btn-edit').click(editTodo);
+
+$('#edit-form-btn-cancel').click(hideForm);
 
 
-function popupForm() {
+function popupAddForm() {
     
     $('#todo-container').css("display", "none");
     
-    $('#my-form').css("display", "block");
+    $('#edit-form').css("display", "none");
+    
+    $('#add-form').css("display", "block");
+    
+}
+
+function popupEditForm() {
+    
+    $('#todo-container').css("display", "none");
+    
+    $('#add-form').css("display", "none");
+    
+    $('#edit-form').css("display", "block");
     
 }
 
@@ -170,7 +186,9 @@ function hideForm() {
 
     $('#todo-container').css("display", "block");
 
-    $('#my-form').css("display", "none");
+    $('#add-form').css("display", "none");
+    
+    $('#edit-form').css("display", "none");
 
     //clearing input fields
 
@@ -201,8 +219,6 @@ function doneTodo(){
 
     var done_id = $(this).parents(':eq(1)').attr('id');//store id of todo in "id"
 
-    var todoIndex = todos.findIndex(todo => todo.id ===done_id );//getting its index in the todo list
-
     $('#'+done_id).css("background-color","yellow");
 
     // location.assign('./index.html');
@@ -211,9 +227,7 @@ function doneTodo(){
 
 function edit() {
 
-    popupForm();
-
-    var edit_id = $(this).parents(':eq(1)').attr('id');
+   var edit_id = $(this).parents(':eq(1)').attr('id');
 
     let editIndex = todos.findIndex(todo => todo.id ===edit_id );
 

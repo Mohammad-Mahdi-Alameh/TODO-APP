@@ -39,7 +39,7 @@
         
         </div> 
 
-        <form class="my-form" id="my-form"> 
+        <form class="add-form" id="add-form"> 
                           
                 <h1>ADD TODO</h1>
 
@@ -57,7 +57,29 @@
                       
                 <button type="submit" class="btn add" id="btn-add">Add</button>
                           
-                <button type="button" class="btn cancel" id="btn-cancel">Cancel</button> 
+                <button type="button" class="btn cancel" id="add-form-btn-cancel">Cancel</button> 
+
+            </form> 
+            
+        <form class="edit-form" id="edit-form"> 
+                          
+                <h1>EDIT TODO</h1>
+
+                <label for="Title"><b>Title</b></label>
+            
+                <input type="text" placeholder="Enter Title" name="Title" id="title" required>
+                      
+                <label for="Description"><b>Description</b></label>
+                          
+                <input type="text" placeholder="Enter Description" name="Description" id="description" required>
+
+                <label for="Point"><b>Point</b></label>
+                          
+                <input type="text" placeholder="Enter Point (number between 1-5)" name="Point"  id="point" required>
+                      
+                <button type="submit" class="btn edit" id="btn-edit">Edit</button>
+                          
+                <button type="button" class="btn cancel" id="edit-form-btn-cancel">Cancel</button> 
 
             </form> 
 

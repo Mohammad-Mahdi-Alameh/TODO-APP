@@ -70,9 +70,9 @@ li{
 
 .todos:hover{
   background-color: #cbd3d0;
-  /* cursor: pointer; */
+  /* cursor: pointer;  */
 }
-#my-form{
+#add-form,#edit-form{
   display: none;
   margin: auto;
   margin-top: 1%;
@@ -87,7 +87,7 @@ li{
   margin-top:30%;
 } */
 
-.my-form input[type=text] {
+.add-form input[type=text] ,.edit-form  input[type=text]{
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -95,7 +95,7 @@ li{
   background: #f1f1f1;
 }
 
-.my-form .btn {
+.add-form .btn {
   background-color: rgb(85, 187, 151);
   color: white;
   padding: 16px 20px;
@@ -104,7 +104,16 @@ li{
   width: 100%;
   margin-bottom:10px;
 }
+.edit-form .btn{
+  background-color: rgb(85, 187, 151);
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
 
+}
 .button-container{
   margin-top: 2%;
   padding:2% 4%;
