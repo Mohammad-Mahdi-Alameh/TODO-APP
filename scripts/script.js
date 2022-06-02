@@ -6,6 +6,8 @@ $( window ).load(displayTodos);
 
 var todos = getTodos();
 
+var id = 1 ;
+
 function displayTodos() {
 
     var string="";
@@ -55,25 +57,27 @@ function getTodos() {
 
 function addTodo() {
 
-    const id=uuidv4();
+    const date=getDate();
 
-    // todos.push({
+    todos.push({
 
-    //     "id" : id,
+        "id" :,
 
-    //     "Title":
+        "Title":,
 
-    //     "Description":
+        "Description":,
 
-    //     "Point":
+        "Point":,
 
-    //     "IsDone":
+        "IsDone":,
 
-    //     "CreatedAt":
+        "CreatedAt":,
 
-    // });
+    });
 
     saveTodo();
+
+    id++;
 
     
 }
@@ -82,6 +86,15 @@ function saveTodo() {
 
     localStorage.setItem("todos",JSON.stringify(todos));
 
+}
+
+function getDate() {
+
+    var today = new Date();
+
+    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()+'-'+today.getMinutes()+'-'+today.getSeconds();
+    
+    return date;
 }
 
 $('#add').click(popupForm);
@@ -95,3 +108,7 @@ function popupForm() {
 
     
 }
+
+$('#btn-add').click(addTodo);
+
+$('#btn-cancel').click(popupForm);
