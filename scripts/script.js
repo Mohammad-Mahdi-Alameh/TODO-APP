@@ -1,43 +1,62 @@
-/////
 
-$( window ).load(displayTodos);
 
-/////
+// $( window ).load(function() {
+//    checkTodos();
+//   });
+
+
 
 var todos = getTodos();
 
 var id = 1 ;
+checkTodos();
+function checkTodos() {
+// console.log(!(jQuery.isEmptyObject(todos)));
+    if(!(jQuery.isEmptyObject(todos))){
+
+      displayTodos();
+
+    }
+    
+}
+// displayTodos();
 
 function displayTodos() {
-
+    
     var string="";
 
-    todos.forEach(element=>{
+    $.each(todos, function(i, item){
 
-                string +=''+
-
-                            '<div class="center">' +
-                                
+                string +=                         
                                 '<ul>' +
                                 
-                                    '<li></li>' +
-                                
+                                    '<li>Title: '+ todos[i].Title +'</li>' +
+
+                                    '<li>Description: '+ todos[i].Description +'</li>' +
+
+                                    '<li>Point: '+ todos[i].Point +'</li>' +
+
+                                    '<li>Date Created: '+ todos[i].CreatedAt +'</li>' +
+                                                       
                                 '</ul>' +
                                 
                                 '<div class="button-container">' +
                                     
-                                    '<div id="delete">    </div>' +    
+                                    '<div id="delete">fv</div>' +    
                                         
-                                    '<div id="done">    </div>' +
+                                    '<div id="done">vf</div>' +
                                         
-                                '</div>' +
+                                '</div>' ;
+
+
                                 
-                            '</div>' 
+                           
+                            
                             
                         });
 
-    document.getElementById("todos").innerHTML=string
-
+    $('#todos').html(string);
+console.log("hi");
 
 }
 
@@ -45,40 +64,42 @@ function getTodos() {
 
     const todosString = localStorage.getItem("todos");
 
-    if (todosJSON !== null) 
+    if (todosString !== null) 
 
         return JSON.parse(todosString);
         
      else 
 
         return [];
-    
-}
 
+}
+// var todos=[];
 function addTodo() {
+
+
 
     const date=getDate();
 
+
     todos.push({
 
-        "id" :,
+        "id" :id,
 
-        "Title":,
+        "Title":$('#title').val(),
 
-        "Description":,
+        "Description":$('#description').val(),
 
-        "Point":,
+        "Point":$('#point').val(),
 
-        "IsDone":,
+        "IsDone":0,
 
-        "CreatedAt":,
+        "CreatedAt":date,
 
     });
 
     saveTodo();
 
     id++;
-
     
 }
 
@@ -92,7 +113,7 @@ function getDate() {
 
     var today = new Date();
 
-    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()+'-'+today.getMinutes()+'-'+today.getSeconds();
+    let date = today.getFullYear()+'/'+(today.getMonth()+1)+'/'+today.getDate()+'/ '+today.getHours()+':'+today.getMinutes()+':'+today.getSeconds();
     
     return date;
 }
@@ -104,11 +125,25 @@ function popupForm() {
     $('#todos').css("display", "none");
 
     $('#my-form').css("display", "block");
-
-
     
 }
 
 $('#btn-add').click(addTodo);
 
-$('#btn-cancel').click(popupForm);
+$('#btn-cancel').click(hideForm);
+
+function hideForm() {
+
+    $('#todos').css("display", "block");
+
+    $('#my-form').css("display", "none");
+
+    //clearing input fields
+
+    $('#title').val('');
+
+    $('#description').val('');
+
+    $('#point').val('');
+
+}
