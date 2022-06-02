@@ -4,13 +4,13 @@ $( window ).load(displayTodos);
 
 /////
 
-function displayTodos() {
+var todos = getTodos();
 
-    const todosJSON=getTodos();
+function displayTodos() {
 
     var string="";
 
-    todosJSON.forEach(element=>{
+    todos.forEach(element=>{
 
                 string +=''+
 
@@ -41,14 +41,37 @@ function displayTodos() {
 
 function getTodos() {
 
-    const todosJSON = localStorage.getItem("todos");
+    const todosString = localStorage.getItem("todos");
 
     if (todosJSON !== null) 
 
-        return JSON.parse(todosJSON);
+        return JSON.parse(todosString);
         
      else 
 
         return [];
+    
+}
+
+function addTodo() {
+
+    const id=uuidv4();
+
+    todos.push({
+
+        "id" : id,
+
+        "Title":
+
+        "Description":
+
+        "Point":
+
+        "IsDone":
+
+        "CreatedAt":
+
+    })
+    
     
 }
