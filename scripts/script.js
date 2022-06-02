@@ -23,18 +23,18 @@ function checkTodos() {
 
 function displayTodos() {
     
-    var string="";
+    var string="", reversed=[];
 
     $.each(todos, function(i, item){
 
                 string +=                         
-                                '<ul>' +
+                                '<div id="todos"><ul>' +
                                 
                                     '<li>Title: '+ todos[i].Title +'</li>' +
 
-                                    '<li>Description: '+ todos[i].Description +'</li>' +
-
                                     '<li>Point: '+ todos[i].Point +'</li>' +
+                                    
+                                    '<li>Description: '+ todos[i].Description +'</li>' +
 
                                     '<li>Date Created: '+ todos[i].CreatedAt +'</li>' +
                                                        
@@ -42,21 +42,24 @@ function displayTodos() {
                                 
                                 '<div class="button-container">' +
                                     
-                                    '<div id="delete">fv</div>' +    
+                                    '<button id="delete">Delete</button>' +    
                                         
-                                    '<div id="done">vf</div>' +
+                                    '<button id="done">Done</button>' +
                                         
-                                '</div>' ;
+                                '</div></div>' ;
 
 
-                                
+                
+                //we created this reversed array to display them indescending order of date created
+
+                // reversed.unshift(string);
+                // console.log(reversed[i]);
                            
                             
                             
                         });
 
-    $('#todos').html(string);
-console.log("hi");
+    $('#todo-container').html(string);
 
 }
 
@@ -120,21 +123,28 @@ function getDate() {
 
 $('#add').click(popupForm);
 
-function popupForm() {
-
-    $('#todos').css("display", "none");
-
-    $('#my-form').css("display", "block");
-    
-}
-
 $('#btn-add').click(addTodo);
 
 $('#btn-cancel').click(hideForm);
 
+$('#delete').click(deleteTodo);
+
+$('#done').click(doneTodo);
+
+
+
+function popupForm() {
+    
+    $('#todo-container').css("display", "none");
+    
+    $('#my-form').css("display", "block");
+    
+}
+
+
 function hideForm() {
 
-    $('#todos').css("display", "block");
+    $('#todo-container').css("display", "block");
 
     $('#my-form').css("display", "none");
 
