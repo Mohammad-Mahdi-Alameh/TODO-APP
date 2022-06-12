@@ -29,7 +29,7 @@ function displayTodos() {
     $.each(todos, function(i, item){
 
                 string +=                         
-                                '<div class="todos" id ='+ todos[i].id+' <ul>' +
+                                '<div class="todos" id ='+ todos[i].id+'><ul>' +
                                 
                                     '<li>Title: '+ todos[i].Title +'</li>' +
 
@@ -248,7 +248,7 @@ function editTodo() {
    var edit_id = $(this).parents(':eq(1)').attr('id');
 
     let editIndex = todos.findIndex(todo => todo.id ===edit_id );
-    
+
     todos.splice(editIndex, 1);
     todos.push({
 
